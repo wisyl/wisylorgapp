@@ -7,21 +7,38 @@
 
 $font-family-base: 'Rubik', sans-serif;
 
-$body-bg:                  	#EEF3F6;
-$body-color:                $gray-900;
-$bg-dark: #3F4257;
+$blue:    #38a9ff;
+$purple:  #888da8;
+$red:     #dc3545;
+$orange:  #E7553C;
+$yellow:  #ffc107;
+$green:   #28a745;
+$black:		#515365;
+$dark-purple: #3F4257;
+$light-blue: #EEF3F6;
+$border: #E6ECF5;
+
+$body-bg: $light-blue;
+$body-color: $black;
 
 $theme-colors: (
-  "primary": #003366,
-  "danger": #ff4136
+  "primary": $orange,
+  "secondary": $purple
 );
 
-$navbar-dark-color:                 rgba($white, 1.0) ;
-$navbar-dark-hover-color:           rgba($white, .85);
-$navbar-dark-active-color:          $white;
-$navbar-dark-toggler-border-color:  rgba($white, .1);
+$font-size-base: .9375rem;
+$font-weight-bold: 500;
+$font-weight-bolder: 700;
 
-$card-border-color:                 #E6ECF5;
+$btn-font-weight: $font-weight-bold;
+
+$navbar-dark-color:                 rgba($white, 1.0) ;
+$navbar-dark-hover-color:           rgba($white, .8);
+$navbar-dark-active-color:          $white;
+$navbar-dark-toggler-border-color:  rgba($white, .9);
+$navbar-dark-toggler-icon-bg:       str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+
+$card-border-color: $border;
 
 // END BS Variable Overrides
 
@@ -30,17 +47,42 @@ $card-border-color:                 #E6ECF5;
 body {
 }
 
+a, .btn {
+	transition: all 0.5s ease;
+}
+
+a:hover {
+	text-decoration: none !important;
+}
+
+.btn-secondary, .badge-secondary {
+	color: $white !important;
+}
+
+label {
+	font-weight: $font-weight-bold;
+}
+
 .card {
 	box-shadow: rgba(0,0,0,0.1) 0 1px 1px;
 	.card-title {
 		font-weight: 500;
-		font-size: 1.2em;
+		font-size: $h5-font-size;
+		margin-bottom: 2rem;
+		&.card-title-bordered {
+			border-bottom:1px solid $border;
+			padding-bottom: 0.5rem;
+		}
 	}
 }
 
 .navbar-dark{
-	background-color: $bg-dark;
+	background-color: $dark-purple;
+	.navbar-nav .nav-link {
+		font-weight: $font-weight-bold;
+	}
 }
+
 
 // End BS Styl Overrides
 
@@ -59,12 +101,16 @@ body {
 
 footer {
 	position: static;
-	bottom: 0;
 	width: 100%;
-	height: 60px;
-	line-height: 60px;
-	background-color: $bg-dark;
+	padding: 1rem 0;
+	background-color: $dark-purple;
 	color: $white;
+	a {
+		color: $navbar-dark-color;
+		&:hover {
+			color: $navbar-dark-hover-color;
+		}
+	}
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";

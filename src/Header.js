@@ -34,20 +34,22 @@ import {
           <NavbarBrand href="/">Wisyl</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="mx-auto text-center" navbar>
               <NavItem>
                 <NavLink href="/components/">Messages</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/">Recipients</NavLink>
               </NavItem>
-              <NavItem style={{marginRight: '15em'}} >
+              <NavItem >
                 <NavLink href="/">Reporting</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="/components/"><FontAwesomeIcon icon="bell" size="lg" /></NavLink>
+							<NavItem >
+                <NavLink href="/" className="d-block d-sm-block d-md-none">Your Account</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+            </Nav>
+            <Nav className="flex-row justify-content-center flex-nowrap d-none d-sm-none d-md-block" navbar>
+              <UncontrolledDropdown nav inNavbar >
                 <DropdownToggle nav caret>
                 <FontAwesomeIcon icon="user" size="lg" />
                 </DropdownToggle>
@@ -60,7 +62,7 @@ import {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Reset
+                    Logout
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

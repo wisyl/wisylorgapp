@@ -16,9 +16,9 @@ import {
 	Badge
  } from 'reactstrap';
 
-import classnames from 'classnames';
+import classnames from 'classnames'; // for tabs
 
-library.add(fab, faBell, faUser);
+library.add(fab, faUser);
  
 class App extends Component {
 	constructor(props) {
@@ -47,7 +47,7 @@ class App extends Component {
 				<Col>
 					<Card>
 						<CardBody>
-							<CardTitle>Create Your Message</CardTitle>
+							<CardTitle className="card-title-bordered">Create Your Message</CardTitle>
 							<Form>
 								<Container>
 									<Row>
@@ -60,7 +60,6 @@ class App extends Component {
 												<Label for="exampleEmail">Link (optional)</Label>
 												<Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
 											</FormGroup>
-											<Button color="primary">Create Message</Button>
 										</Col>
 										<Col md={{ size: 'auto', offset: 1 }}>
 											<FormGroup>
@@ -85,7 +84,7 @@ class App extends Component {
 				<Col>
 					<Card>
 						<CardBody>
-							<CardTitle>Message Channels</CardTitle>
+							<CardTitle className="card-title-bordered">Message Channels</CardTitle>
 							<Nav tabs>
 								<NavItem>
 									<NavLink className={classnames({ active: this.state.activeTab === '1' })}
@@ -159,7 +158,7 @@ class App extends Component {
 				<Col>
 					<Card>
 						<CardBody>
-							<CardTitle>Recipients</CardTitle>
+							<CardTitle className="card-title-bordered">Recipients</CardTitle>
 							<Form>
 								<Container>
 									<Row>
@@ -211,7 +210,7 @@ class App extends Component {
 				<Col>
 					<Card>
 						<CardBody>
-							<CardTitle>Schedule</CardTitle>
+							<CardTitle className="card-title-bordered">Schedule</CardTitle>
 							<Form>
 								<Container>
 									<Row>

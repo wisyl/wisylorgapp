@@ -1,12 +1,24 @@
 import React, {Component} from 'react';
 
+import {
+	Container,Row,Col,
+
+ } from 'reactstrap';
+
 export default class Footer extends Component {
   render(){
     return (
-      <footer class="footer text-center">
-        <div class="container">
-          <span>Footery things.</span>
-        </div>
+      <footer>
+        <Container>
+          <Row>
+            <Col>
+            &copy; Wisyl, All rights reserved.
+            </Col>
+            <Col className="text-right">
+              <a href="/">Terms of Use</a> &nbsp; <a href="/">Privacy Policy</a>
+            </Col>
+          </Row>
+        </Container>
       </footer>
     )
   }
