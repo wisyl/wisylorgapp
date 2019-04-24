@@ -1,0 +1,71 @@
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+// BS Variable Overrides
+
+$font-family-base: 'Rubik', sans-serif;
+
+$body-bg:                  	#EEF3F6;
+$body-color:                $gray-900;
+$bg-dark: #3F4257;
+
+$theme-colors: (
+  "primary": #003366,
+  "danger": #ff4136
+);
+
+$navbar-dark-color:                 rgba($white, 1.0) ;
+$navbar-dark-hover-color:           rgba($white, .85);
+$navbar-dark-active-color:          $white;
+$navbar-dark-toggler-border-color:  rgba($white, .1);
+
+$card-border-color:                 #E6ECF5;
+
+// END BS Variable Overrides
+
+
+// BS Style Overrides
+body {
+}
+
+.card {
+	box-shadow: rgba(0,0,0,0.1) 0 1px 1px;
+	.card-title {
+		font-weight: 500;
+		font-size: 1.2em;
+	}
+}
+
+.navbar-dark{
+	background-color: $bg-dark;
+}
+
+// End BS Styl Overrides
+
+@include media-breakpoint-up(sm) {
+	.site-container {
+		padding: 6.25rem 2.75rem 4rem 2.75rem;
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.site-container {
+		padding: 4.75rem 0 2rem 0;
+	}
+}
+
+
+footer {
+	position: static;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	background-color: $bg-dark;
+	color: $white;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
