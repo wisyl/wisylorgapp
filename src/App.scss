@@ -43,15 +43,46 @@ $card-border-color: $border;
 // END BS Variable Overrides
 
 
+@include media-breakpoint-up(sm) {
+	.site-container {
+		padding: 6.25rem 2.75rem 4rem 2.75rem;
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.site-container {
+		padding: 4.75rem 0 2rem 0;
+	}
+}
+
+
+footer {
+	position: static;
+	width: 100%;
+	padding: 1rem 0;
+	background-color: $dark-purple;
+	color: $white;
+	a {
+		color: $navbar-dark-color;
+		margin-left: 2rem;
+		&:hover {
+			color: $navbar-dark-hover-color;
+		}
+	}
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
 // BS Style Overrides
 body {
 }
 
 a, .btn {
 	transition: all 0.5s ease;
+	cursor: pointer;
 }
 
-a:hover {
+a:hover, .btn:hover {
 	text-decoration: none !important;
 }
 
@@ -80,38 +111,26 @@ label {
 	background-color: $dark-purple;
 	.navbar-nav .nav-link {
 		font-weight: $font-weight-bold;
+		margin-left: 1rem;
 	}
 }
 
-
-// End BS Styl Overrides
-
-@include media-breakpoint-up(sm) {
-	.site-container {
-		padding: 6.25rem 2.75rem 4rem 2.75rem;
+.form-control {
+	padding: 1.7rem 1rem;
+	line-height: 1.5;
+	color: $black;
+	border: 2px solid $border;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	&:focus {
+		border-color: rgba($orange, .4);
+		box-shadow: none;
 	}
 }
 
-@include media-breakpoint-down(sm) {
-	.site-container {
-		padding: 4.75rem 0 2rem 0;
-	}
+.form-check-input {
+	position: relative;
+	margin-left: 0;
+	margin-right: .5em;
 }
 
-
-footer {
-	position: static;
-	width: 100%;
-	padding: 1rem 0;
-	background-color: $dark-purple;
-	color: $white;
-	a {
-		color: $navbar-dark-color;
-		&:hover {
-			color: $navbar-dark-hover-color;
-		}
-	}
-}
-
-@import "node_modules/bootstrap/scss/bootstrap";
-
+// End BS Style Overrides
