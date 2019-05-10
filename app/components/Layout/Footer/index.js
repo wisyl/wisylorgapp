@@ -1,25 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {
-	Container,Row,Col,
-
- } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 export default class Footer extends Component {
-  render(){
+  render() {
     return (
       <footer>
         <Container>
           <Row>
-            <Col>
-            &copy; Wisyl, All rights reserved.
-            </Col>
+            <Col>&copy; Wisyl, All rights reserved.</Col>
             <Col className="text-right">
               <a href="/">Terms of Use</a> &nbsp; <a href="/">Privacy Policy</a>
             </Col>
           </Row>
         </Container>
       </footer>
-    )
+    );
   }
 }

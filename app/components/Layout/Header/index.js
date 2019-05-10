@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index';
 import {
   Collapse,
   Navbar,
@@ -11,22 +11,25 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+} from 'reactstrap';
 
-  export default class Header extends React.Component {
+export default class Header extends React.Component {
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
+
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
+
   render() {
     return (
       <div>
@@ -36,34 +39,33 @@ import {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mx-auto text-center" navbar>
               <NavItem>
-                <NavLink href="/components/">Messages</NavLink>
+                <NavLink href="/">Users</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/messages">Messages</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/">Recipients</NavLink>
               </NavItem>
-              <NavItem >
+              <NavItem>
                 <NavLink href="/">Reporting</NavLink>
               </NavItem>
-							<NavItem >
-                <NavLink href="/" className="d-block d-sm-block d-md-none">Your Account</NavLink>
+              <NavItem>
+                <NavLink href="/" className="d-block d-sm-block d-md-none">
+                  Your Account
+                </NavLink>
               </NavItem>
             </Nav>
             <Nav className="flex-row justify-content-center flex-nowrap d-none d-sm-none d-md-block" navbar>
-              <UncontrolledDropdown nav inNavbar >
+              <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                <FontAwesomeIcon icon="user" size="lg" />
+                  <FontAwesomeIcon icon="user" size="lg" />
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
+                  <DropdownItem>Option 1</DropdownItem>
+                  <DropdownItem>Option 2</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    Logout
-                  </DropdownItem>
+                  <DropdownItem>Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
