@@ -6,6 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'; // add fontawesome i
 
 import { Messages, Users, NotFoundPage } from 'containers';
 
+import { Header, Footer } from 'components';
 import GlobalStyle from '../../global-styles';
 
 library.add(fab, faUser); // add fontawesome icons here
@@ -16,11 +17,13 @@ export default function App() {
   return (
     <div>
       {/* ROUTING COMPONENTS */}
+      <Header />
       <Switch>
         <Route exact path="/" component={Users} />
         <Route path="/messages" component={Messages} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
       {/* GLOBAL STYLE */}
       <GlobalStyle />
     </div>
