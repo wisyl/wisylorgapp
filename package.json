@@ -1,25 +1,40 @@
 {
-  "name": "wisylapp",
+  "name": "wisyl-org-app",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+  "description": "WisylOrgApp",
+  "author": {
+    "name": "Pro Dev",
+    "email": "prodev9999@gmail.com"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "node server.js",
+    "build": "next build",
+    "export": "next export",
+    "start": "cross-env NODE_ENV=production node server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-brands-svg-icons": "^5.8.2",
+    "@fortawesome/free-regular-svg-icons": "^5.8.2",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
+    "cross-env": "^5.2.0",
+    "express": "^4.17.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "jquery": "^3.4.1",
+    "next": "^8.1.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dates": "^20.2.0",
+    "react-dom": "^16.8.6",
+    "reactstrap": "^8.0.0",
+    "styled-components": "^4.2.0"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.2.0"
+  }
 }
