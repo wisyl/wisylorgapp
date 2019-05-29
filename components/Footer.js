@@ -9,7 +9,7 @@ import {
 export default class extends Component {
   render() {
     return (
-      <footer dark className="sticky-bottom">
+      <footer className="sticky-bottom">
         <Container>
           <Row>
             <Col>
