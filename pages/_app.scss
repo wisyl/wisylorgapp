@@ -1,4 +1,7 @@
-﻿
+﻿// FontAwesome
+@import "../static/fontawesome/css/all.min.css";
+
+// Bootstrap
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
@@ -38,7 +41,6 @@ $navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox
 $card-border-color: $border;
 
 // END BS Variable Overrides
-
 
 @include media-breakpoint-up(sm) {
     .site-container {
