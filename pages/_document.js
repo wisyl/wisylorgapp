@@ -1,31 +1,20 @@
-﻿// _document is only rendered on the server side and not on the client side
-// Event handlers like onClick can't be added to this file
-
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+﻿import Document, { Head, Main, NextScript } from 'next/document'
 
 export default class extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
   render() {
+    /**
+    * Here we use _document.js to add a "lang" propery to the HTML object if
+    * one is set on the page.
+    **/
     return (
-      <Html>
+      <html lang={this.props.__NEXT_DATA__.props.pageProps.lang || 'en'}>
         <Head>
-          <style>
-            {`body { margin: 0 }`}
-          </style>
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </Html>
+      </html>
     )
   }
 }

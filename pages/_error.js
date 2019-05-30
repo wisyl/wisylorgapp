@@ -1,23 +1,78 @@
-﻿import React from 'react'
-import Error from 'next/error'
-import fetch from 'isomorphic-unfetch'
+﻿/**
+ * Creating a page named _error.js lets you override HTTP error messages
+ */
+import React from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
+import { Container } from 'reactstrap'
+import Styles from '../css/index.scss'
+import { withRouter } from 'next/router'
 
-export default class extends React.Component {
-  static async getInitialProps({ res, err }) {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : null
+class ErrorPage extends React.Component {
 
-    const nextRes = await fetch('https://api.github.com/repos/zeit/next.js')
-    const errorCode = statusCode > 200 ? statusCode : false
-    const json = await nextRes.json()
+  static propTypes() {
+    return {
+      errorCode: React.PropTypes.number.isRequired,
+      url: React.PropTypes.string.isRequired
+    }
+  }
 
-    return { errorCode, stars: json.stargazers_count }
+  static getInitialProps({ res, xhr }) {
+    const errorCode = res ? res.statusCode : (xhr ? xhr.status : null)
+    return { errorCode }
   }
 
   render() {
-    if (this.props.errorCode) {
-      return <Error statusCode={this.props.errorCode} />
+    var response
+    switch (this.props.errorCode) {
+      case 200: // Also display a 404 if someone requests /_error explicitly
+      case 404:
+        response = (
+          <div>
+            <Head>
+              <style dangerouslySetInnerHTML={{ __html: Styles }} />
+            </Head>
+            <Container className="pt-5 text-center">
+              <h1 className="display-4">Page Not Found</h1>
+              <p>The page <strong>{this.props.router.pathname}</strong> does not exist.</p>
+              <p><Link href="/"><a>Home</a></Link></p>
+            </Container>
+          </div>
+        )
+        break
+      case 500:
+        response = (
+          <div>
+            <Head>
+              <style dangerouslySetInnerHTML={{ __html: Styles }} />
+            </Head>
+            <Container className="pt-5 text-center">
+              <h1 className="display-4">Internal Server Error</h1>
+              <p>An internal server error occurred.</p>
+            </Container>
+          </div>
+        )
+        break
+      default:
+        response = (
+          <div>
+            <Head>
+              <style dangerouslySetInnerHTML={{ __html: Styles }} />
+            </Head>
+            <Container className="pt-5 text-center">
+              <h1 className="display-4">HTTP {this.props.errorCode} Error</h1>
+              <p>
+                An <strong>HTTP {this.props.errorCode}</strong> error occurred while
+                trying to access <strong>{this.props.router.pathname}</strong>
+              </p>
+            </Container>
+          </div>
+        )
     }
 
-    return <div>Next stars: {this.props.stars}</div>
+    return response
   }
+
 }
+
+export default withRouter(ErrorPage)
