@@ -7,8 +7,6 @@ import {
   CardBody,
   Label,
 } from 'reactstrap';
-import TestButton from '../../components/common/TestButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class extends React.Component {
   render() {
@@ -17,7 +15,7 @@ export default class extends React.Component {
         <Col>
           <Card>
             <CardBody className="d-flex flex-row align-items-center">
-              <FontAwesomeIcon color="gray" icon="user-friends" className="circle-background background-gray mb-3" />
+              <i className="fas fa-user-friends circle-background background-gray mb-3" />
               <div className="ml-3 d-flex flex-column">
                 <h2>2,456</h2>
                 TOTAL INVITED RECIPIENTS
@@ -29,7 +27,7 @@ export default class extends React.Component {
         <Col>
           <Card>
             <CardBody className="d-flex flex-row align-items-center">
-              <FontAwesomeIcon color="red" icon="user-friends" className="circle-background background-pink mb-3" />
+              <i className="fas fa-user-friends circle-background background-pink mb-3" />
               <div className="ml-3 d-flex flex-column">
                 <h2>1,897</h2>
                 ACTIVE RECIPIENTS

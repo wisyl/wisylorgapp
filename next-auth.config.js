@@ -4,7 +4,8 @@ const nextAuthFunctions = require('./next-auth.functions')
 // If we want to pass a custom session store then we also need to pass an 
 // instance of Express Session along with it.
 const expressSession = require('express-session')
-const DynamoDBStore = require('connect-dynamodb')(expressSession);
+const DynamoDBStore = require('connect-dynamodb')(expressSession)
+const AWS = require('aws-sdk')
 
 // If no store set, NextAuth defaults to using Express Sessions in-memory
 // session store (the fallback is intended as fallback for testing only).

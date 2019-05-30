@@ -1,5 +1,4 @@
 ﻿import { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
 import {
   Collapse,
   Navbar,
@@ -64,7 +63,7 @@ export default class extends Component {
           <Nav className="flex-row justify-content-center flex-nowrap d-none d-sm-none d-md-block" navbar>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                <FontAwesomeIcon icon="user" size="lg" className="navbar-icon" />
+                <i className="fas fa-user navbar-icon" />
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Option 1</DropdownItem>

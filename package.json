@@ -42,6 +42,7 @@
     "passport-twitter": "^1.0.4",
     "react": "^16.8.6",
     "react-bootstrap-table": "^4.3.1",
+    "react-dates": "^20.2.0",
     "react-dom": "^16.8.6",
     "react-syntax-highlighter": "^10.3.0",
     "react-transition-group": "^4.1.0",
@@ -51,7 +52,9 @@
     "vogels": "^2.2.0"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "cross-env": "^5.2.0",
+    "raw-loader": "^2.0.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.0.7"

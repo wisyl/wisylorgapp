@@ -1,6 +1,7 @@
 ﻿'use strict'
 
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
+const fs = require('fs')
 // .env
 dotenv.config()
 
@@ -20,8 +21,8 @@ const nextAuth = require('next-auth')
 const nextAuthConfig = require('./next-auth.config')
 
 const routes = {
-  admin: require('./routes/admin'),
-  account: require('./routes/account')
+  //admin: require('./routes/admin'),
+  //account: require('./routes/account')
 }
 
 process.on('uncaughtException', function (err) {
