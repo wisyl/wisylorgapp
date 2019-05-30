@@ -1,16 +1,17 @@
 ﻿'use strict'
 
+const dotenv = require('dotenv');
 // .env
-dotenv.config();
+dotenv.config()
 
 // override env-specific .env file
-const node_env = process.env.NODE_ENV || 'development';
-const envConfig = dotenv.parse(fs.readFileSync(`.env.${node_env}`));
+const node_env = process.env.NODE_ENV || 'development'
+const envConfig = dotenv.parse(fs.readFileSync(`.env.${node_env}`))
 for (let k in envConfig) {
-  process.env[k] = envConfig[k];
+  process.env[k] = envConfig[k]
 }
-process.env.NODE_ENV = node_env;
-process.env.PORT = process.env.PORT || (node_env === 'production' ? 80 : 3000);
+process.env.NODE_ENV = node_env
+process.env.PORT = process.env.PORT || (node_env === 'production' ? 80 : 3000)
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -61,17 +62,6 @@ nextApp
 
     // Add account management route - reuses functions defined for NextAuth
     //routes.account(expressApp, nextAuthOptions.functions)
-
-    // Serve fonts from ionicon npm module
-    //expressApp.use('/fonts/ionicons', express.static('./node_modules/ionicons/dist/fonts'))
-
-    // A simple example of custom routing
-    // Send requests for '/custom-route/{anything}' to 'pages/examples/routing.js'
-    //expressApp.get('/custom-route/:id', (req, res) => {
-    //  // Note: To make capturing a slug easier when rendering both client
-    //  // and server side, name it ':id'
-    //  return nextApp.render(req, res, '/examples/routing', req.params)
-    //})
 
     // Default catch-all handler to allow Next.js to handle all other routes
     expressApp.all('*', (req, res) => {
