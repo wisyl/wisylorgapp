@@ -1,39 +1,26 @@
-/**
- * next-auth.config.js Example
- *
- * Environment variables for this example:
- *
- * PORT=3000
- * SERVER_URL=http://localhost:3000
- * MONGO_URI=mongodb://localhost:27017/my-database
- *
- * If you wish, you can put these in a `.env` to seperate your environment 
- * specific configuration from your code.
- **/
-
-// Load environment variables from a .env file if one exists
-require('dotenv').load()
-
 const nextAuthProviders = require('./next-auth.providers')
 const nextAuthFunctions = require('./next-auth.functions')
 
 // If we want to pass a custom session store then we also need to pass an 
 // instance of Express Session along with it.
 const expressSession = require('express-session')
-const MongoStore = require('connect-mongo')(expressSession)
+const DynamoDBStore = require('connect-dynamodb')(expressSession);
 
 // If no store set, NextAuth defaults to using Express Sessions in-memory
 // session store (the fallback is intended as fallback for testing only).
-let sessionStore 
-if (process.env.MONGO_URI) { 
-  sessionStore = new MongoStore({
-     url: process.env.MONGO_URI,
-     autoRemove: 'interval',
-     autoRemoveInterval: 10, // Removes expired sessions every 10 minutes
-     collection: 'sessions',
-     stringify: false
-  })
-}  
+let sessionStore = new DynamoDBStore({
+  AWSConfigJSON: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
+  },
+  client: new AWS.DynamoDB({
+    endpoint: new AWS.Endpoint(`https://dynamodb.${process.env.AWS_REGION}.amazonaws.com`)
+  }),
+  table: 'org-sessions',
+  readCapacityUnits: 20,
+  writeCapacityUnits: 20
+})
   
 module.exports = () => {
   // We connect to the User DB before we define our functions. 
@@ -50,7 +37,7 @@ module.exports = () => {
         // starting Express, rather than leaving it to NextAuth.
         // port: process.env.PORT || 3000,
         // Secret used to encrypt session data on the server.
-        sessionSecret: 'change-me',
+        sessionSecret: process.env.SESSION_SECRET,
         // Maximum Session Age in ms (optional, default is 7 days).
         // The expiry time for a session is reset every time a user revisits 
         // the site or revalidates their session token. This is the maximum 
