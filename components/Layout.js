@@ -2,7 +2,9 @@
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
+
 import Styles from '../static/app.scss'
+import Package from '../package'  // package.json
 
 export default class extends Component {
   render() {
