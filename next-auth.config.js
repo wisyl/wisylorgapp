@@ -22,7 +22,7 @@ let sessionStore = new DynamoDBStore({
   readCapacityUnits: 20,
   writeCapacityUnits: 20
 })
-  
+
 module.exports = () => {
   // We connect to the User DB before we define our functions. 
   // next-auth.functions.js returns an async method that does that and returns 
@@ -60,7 +60,7 @@ module.exports = () => {
         serverUrl: process.env.SERVER_URL || null,
         // Add an Express Session store.
         expressSession: expressSession,
-        sessionStore: sessionStore,
+        sessionStore: null, //sessionStore,
         // Define oAuth Providers
         providers: nextAuthProviders(),
         // Define functions for manging users and sending email.
