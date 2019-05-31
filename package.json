@@ -23,7 +23,10 @@
     "start": "cross-env NODE_ENV=production PORT=80 node server.js"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "babel-core": "^6.26.3",
+    "babel-plugin-import-static-files": "^1.0.4",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "bootstrap": "^4.3.1",
     "connect-dynamodb": "^2.0.3",
@@ -47,6 +50,7 @@
     "react-transition-group": "^4.1.0",
     "reactstrap": "^8.0.0",
     "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "universal-cookie": "^4.0.0",
     "vogels": "^2.2.0"
   },

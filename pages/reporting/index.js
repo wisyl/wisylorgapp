@@ -1,12 +1,11 @@
-﻿import { Component } from 'react'
-import {
+﻿import {
   Container,
 } from 'reactstrap' // bootstrap
+import Page from '../../components/page'
+import Layout from '../../components/layout'
 
-import Layout from '../../components/Layout'
 
-
-export default class extends Component {
+export default class extends Page {
   render() {
     return (
       <Layout>

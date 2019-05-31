@@ -1,5 +1,4 @@
-﻿import { Component } from 'react'
-import 'react-dates/initialize' // datepicker
+﻿import 'react-dates/initialize' // datepicker
 import {
   Badge,
   Button,
@@ -24,9 +23,10 @@ import { SingleDatePicker } from 'react-dates' // datepicker
 import 'react-dates/lib/css/_datepicker.css'
 import classnames from 'classnames' // for navtabs
 
-import Layout from '../../components/Layout'
+import Page from '../../components/page'
+import Layout from '../../components/layout'
 
-export default class extends Component {
+export default class extends Page {
   constructor(props) {
     super(props)
 

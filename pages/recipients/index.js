@@ -1,11 +1,11 @@
-﻿import { Component } from 'react'
-import {
+﻿import {
   Container,
   Row,
   Col,
 } from 'reactstrap' // bootstrap
 
-import Layout from '../../components/Layout'
+import Page from '../../components/page'
+import Layout from '../../components/layout'
 import {
   Filters,
   Statistics,
@@ -14,7 +14,7 @@ import {
   Groups
 } from '../../components/recipients'
 
-export default class extends Component {
+export default class extends Page {
 
   render() {
     return (

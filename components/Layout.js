@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react'
 import Head from 'next/head'
-import Header from './Header'
-import Footer from './Footer'
+import Header from './header'
+import Footer from './footer'
 
 import Styles from '../static/app.scss'
 import Package from '../package'  // package.json
