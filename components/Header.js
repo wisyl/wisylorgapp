@@ -49,16 +49,16 @@ export default class extends Component {
                 <NavLink href="/reporting">Reporting</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/todo">Calendar</NavLink>
+                <NavLink href="/calendar">Calendar</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/todo">Reply</NavLink>
+                <NavLink href="/reply">Reply</NavLink>
               </NavItem>
             </Nav>
             <Nav className="flex-row justify-content-center flex-nowrap d-none d-sm-none d-md-block" navbar>
               <NavItem>
-                <NavLink href="/todo">
-                  <i className="fas fa-user navbar-icon"/>
+                <NavLink href="/profile">
+                  <i className="fas fa-user"/>
                 </NavLink>
               </NavItem>
             </Nav>

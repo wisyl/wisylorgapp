@@ -9,7 +9,7 @@ const AWS = require('aws-sdk')
 
 // If no store set, NextAuth defaults to using Express Sessions in-memory
 // session store (the fallback is intended as fallback for testing only).
-let sessionStore = new DynamoDBStore({
+let sessionStore = process.env.NO_SESSION ? null : new DynamoDBStore({
   AWSConfigJSON: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -60,7 +60,7 @@ module.exports = () => {
         serverUrl: process.env.SERVER_URL || null,
         // Add an Express Session store.
         expressSession: expressSession,
-        sessionStore: null, //sessionStore,
+        sessionStore: sessionStore,
         // Define oAuth Providers
         providers: nextAuthProviders(),
         // Define functions for manging users and sending email.

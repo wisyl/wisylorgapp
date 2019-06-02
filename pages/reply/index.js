@@ -6,7 +6,7 @@ export default class extends Page {
     return (
       <Layout>
         <div className="site-container">
-          <h3>Not implemented yet!</h3>
+          <h3>Reply Screen</h3>
         </div>
       </Layout>
     );
