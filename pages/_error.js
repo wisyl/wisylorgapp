@@ -17,9 +17,10 @@ class ErrorPage extends React.Component {
     }
   }
 
-  static getInitialProps({ res, xhr }) {
+  static getInitialProps({ req, res, xhr }) {
     const errorCode = res ? res.statusCode : (xhr ? xhr.status : null)
-    return { errorCode }
+    const pathname = req.originalUrl
+    return { errorCode, pathname }
   }
 
   render() {
@@ -34,7 +35,7 @@ class ErrorPage extends React.Component {
             </Head>
             <Container className="pt-5 text-center">
               <h1 className="display-4">Page Not Found</h1>
-              <p>The page <strong>{this.props.router.pathname}</strong> does not exist.</p>
+              <p>The page <strong>{this.props.pathname}</strong> does not exist.</p>
               <p><Link href="/"><a>Home</a></Link></p>
             </Container>
           </div>
@@ -63,7 +64,7 @@ class ErrorPage extends React.Component {
               <h1 className="display-4">HTTP {this.props.errorCode} Error</h1>
               <p>
                 An <strong>HTTP {this.props.errorCode}</strong> error occurred while
-                trying to access <strong>{this.props.router.pathname}</strong>
+                trying to access <strong>{this.props.pathname}</strong>
               </p>
             </Container>
           </div>
