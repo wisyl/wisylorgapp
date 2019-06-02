@@ -1,0 +1,188 @@
+﻿@charset "UTF-8";
+
+// FontAwesome
+@import "../static/fontawesome/css/all.min.css";
+
+// Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// BS Variable Overrides
+
+$font-family-base: 'Rubik', sans-serif;
+
+$blue: #38a9ff;
+$purple: #888da8;
+$red: #dc3545;
+$orange: #E7553C;
+$yellow: #ffc107;
+$green: #28a745;
+$black: #515365;
+$dark-purple: #3F4257;
+$light-blue: #EEF3F6;
+$border: #E6ECF5;
+
+$body-bg: $light-blue;
+$body-color: $black;
+
+$theme-colors: ( "primary": $orange, "secondary": $purple );
+
+$font-size-base: .9375rem;
+$font-weight-bold: 500;
+$font-weight-bolder: 700;
+
+$btn-font-weight: $font-weight-bold;
+
+$navbar-dark-color: rgba($white, 1.0);
+$navbar-dark-hover-color: rgba($white, .8);
+$navbar-dark-active-color: $white;
+$navbar-dark-toggler-border-color: rgba($white, .9);
+$navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+
+$card-border-color: $border;
+
+// END BS Variable Overrides
+
+.lead {
+  font-size: 1.4em;
+}
+
+
+@media (max-width: 768px) {
+  .display-2 {
+    font-size: 3em;
+  }
+
+  .display-3 {
+    font-size: 2.5em;
+  }
+
+  .display-4 {
+    font-size: 2em;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+    .site-container {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .site-container {
+        padding: 4.75rem 0 2rem 0;
+    }
+}
+
+
+footer {
+    position: static;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: $dark-purple;
+    color: $white;
+
+    a {
+        color: $navbar-dark-color;
+        margin-left: 2rem;
+
+        &:hover {
+            color: $navbar-dark-hover-color;
+        }
+    }
+}
+
+.circle-background {
+    padding: 10px;
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.background-gray {
+    background-color: #f4f5f8;
+}
+
+.background-pink {
+    background-color: #fceeeb;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// BS Style Overrides
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+
+a, .btn {
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+a:hover, .btn:hover {
+    text-decoration: none !important;
+}
+
+.btn-secondary, .badge-secondary {
+    color: $white !important;
+}
+
+label {
+    font-weight: $font-weight-bold;
+}
+
+.card {
+    box-shadow: rgba(0,0,0,0.1) 0 1px 1px;
+    background: $white;
+    .card-title {
+        font-weight: 500;
+        font-size: $h5-font-size;
+        margin-bottom: 2rem;
+
+        &.card-title-bordered {
+            border-bottom: 1px solid $border;
+            padding-bottom: 0.5rem;
+        }
+    }
+}
+
+.navbar-dark {
+    background-color: $dark-purple;
+
+    .navbar-nav .nav-link {
+        font-weight: $font-weight-bold;
+        margin-left: 1rem;
+    }
+}
+
+.form-control {
+    //padding: 1.7rem 1rem;
+    line-height: 1.5;
+    color: $black;
+    border: 2px solid $border;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:focus {
+        border-color: rgba($orange, .4);
+        box-shadow: none;
+    }
+}
+
+.form-check-input {
+    position: relative;
+    margin-left: 0;
+    margin-right: .5em;
+}
+
+// End BS Style Overrides
