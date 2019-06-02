@@ -19,6 +19,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development NO_SESSION=true PORT=3000 node server.js",
+    "dev-with-session": "cross-env NODE_ENV=development PORT=3000 node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production PORT=80 node server.js"
   },
