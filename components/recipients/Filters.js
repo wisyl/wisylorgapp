@@ -14,7 +14,7 @@ export default class extends React.Component {
         <Row className="justify-content-between">
           <Col xs={{ size: 'auto' }}>
             <Row className="justify-content-start">
-              <Col>
+              <Col className="pl-0">
                 {/* groups */}
                 <Input type="select" name="select" id="group-selection">
                   <option>All</option>
