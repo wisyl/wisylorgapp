@@ -3,6 +3,9 @@
 // FontAwesome
 @import "../static/fontawesome/css/all.min.css";
 
+// React-Date-Picker
+@import "../node_modules/react-dates/lib/css/_datepicker";
+
 // Bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootstrap/scss/functions";
@@ -44,70 +47,6 @@ $navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3csvg viewBox
 $card-border-color: $border;
 
 // END BS Variable Overrides
-
-.lead {
-  font-size: 1.4em;
-}
-
-
-@media (max-width: 768px) {
-  .display-2 {
-    font-size: 3em;
-  }
-
-  .display-3 {
-    font-size: 2.5em;
-  }
-
-  .display-4 {
-    font-size: 2em;
-  }
-}
-
-@include media-breakpoint-up(sm) {
-    .site-container {
-        padding: 2rem 2rem 2rem 2rem;
-    }
-}
-
-@include media-breakpoint-down(sm) {
-    .site-container {
-        padding: 4.75rem 0 2rem 0;
-    }
-}
-
-
-footer {
-    position: static;
-    width: 100%;
-    padding: 1rem 0;
-    background-color: $dark-purple;
-    color: $white;
-
-    a {
-        color: $navbar-dark-color;
-        margin-left: 2rem;
-
-        &:hover {
-            color: $navbar-dark-hover-color;
-        }
-    }
-}
-
-.circle-background {
-    padding: 10px;
-    width: 40px !important;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.background-gray {
-    background-color: #f4f5f8;
-}
-
-.background-pink {
-    background-color: #fceeeb;
-}
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -186,3 +125,70 @@ label {
 }
 
 // End BS Style Overrides
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.lead {
+  font-size: 1.4em;
+}
+
+
+@media (max-width: 768px) {
+  .display-2 {
+    font-size: 3em;
+  }
+
+  .display-3 {
+    font-size: 2.5em;
+  }
+
+  .display-4 {
+    font-size: 2em;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+    .site-container {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .site-container {
+        padding: 4.75rem 0 2rem 0;
+    }
+}
+
+
+footer {
+    position: static;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: $dark-purple;
+    color: $white;
+
+    a {
+        color: $navbar-dark-color;
+        margin-left: 2rem;
+
+        &:hover {
+            color: $navbar-dark-hover-color;
+        }
+    }
+}
+
+.circle-background {
+    padding: 10px;
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.background-gray {
+    background-color: #f4f5f8;
+}
+
+.background-pink {
+    background-color: #fceeeb;
+}
