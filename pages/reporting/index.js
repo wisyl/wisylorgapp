@@ -10,11 +10,7 @@ export default class extends Page {
     return (
       <Layout>
         <div className="site-container">
-          <Container>
-            {/*
-              Add your code here
-            */}
-          </Container>
+          <h3>Reporting Screen</h3>
         </div>
       </Layout>
     );
