@@ -20,7 +20,6 @@ import {
   TabPane,
 } from 'reactstrap' // bootstrap
 import { SingleDatePicker } from 'react-dates' // datepicker
-import 'react-dates/lib/css/_datepicker.css'
 import classnames from 'classnames' // for navtabs
 
 import Page from '../../components/page'
@@ -291,8 +290,6 @@ export default class extends Page {
                                 <Input type="radio" name="radio1" defaultChecked /> Send Now (are you sure you want to
                                 push the red button)
                               </Label>
-                            </FormGroup>
-                            <FormGroup>
                               <Label>
                                 <Input type="radio" name="radio1" /> Schedule for Later
                               </Label>
@@ -306,8 +303,6 @@ export default class extends Page {
                                   id="your_unique_id" // PropTypes.string.isRequired,
                                 />
                               </div>
-                            </FormGroup>
-                            <FormGroup>
                               <p>
                                 *86 users have specific time preferences set, the remaining 55 users will get the
                                 message now.

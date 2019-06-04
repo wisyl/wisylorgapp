@@ -1,5 +1,8 @@
-﻿
-module.exports = {
+﻿module.exports = {
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000, //25s
+    pagesBufferLength: 10
+  },
   webpack: (config, options) => {
     config.module.rules.push(
       {

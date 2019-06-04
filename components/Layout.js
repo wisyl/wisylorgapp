@@ -4,7 +4,6 @@ import Header from './header'
 import Footer from './footer'
 
 import Styles from '../static/app.scss'
-import Package from '../package'  // package.json
 
 export default class extends Component {
   render() {

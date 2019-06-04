@@ -18,10 +18,10 @@ export default class extends React.Component {
 
   renderItem(name) {
     return (
-      <Row className="justify-content-between">
+      <Row className="justify-content-between mt-3">
         <Col>
-          <Label>{name}</Label>
-          <div className="m-0">935 People</div>
+          <strong>{name}</strong><br/>
+          {'935'} People
         </Col>
         <Col xs="4">
           <Button color="link">Manage</Button>

@@ -29,7 +29,7 @@ export default class extends Page {
                 <Statistics />
                 <RecipientsList />
               </Col>
-              <Col xs="4">
+              <Col xs="3.5">
                 <Channels />
                 <Groups />
               </Col>

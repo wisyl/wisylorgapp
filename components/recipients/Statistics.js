@@ -18,7 +18,7 @@ export default class extends React.Component {
               <i className="fas fa-user-friends circle-background background-gray mb-3" />
               <div className="ml-3 d-flex flex-column">
                 <h2>2,456</h2>
-                TOTAL INVITED RECIPIENTS
+                <label>TOTAL INVITED RECIPIENTS</label>
               </div>
             </CardBody>
           </Card>
@@ -30,7 +30,7 @@ export default class extends React.Component {
               <i className="fas fa-user-friends circle-background background-pink mb-3" />
               <div className="ml-3 d-flex flex-column">
                 <h2>1,897</h2>
-                ACTIVE RECIPIENTS
+                <label>ACTIVE RECIPIENTS</label>
               </div>
             </CardBody>
           </Card>
