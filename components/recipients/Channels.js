@@ -34,6 +34,11 @@ export default class extends React.Component {
             <Label>33%</Label>
           </Row>
           <Progress value="33" color="danger"/>
+          <Row className="justify-content-between ml-1 mr-1 mt-3">
+            <Label>Snapchat</Label>
+            <Label>15%</Label>
+          </Row>
+          <Progress value="15" color="info"/>
         </CardBody>
       </Card>
 
