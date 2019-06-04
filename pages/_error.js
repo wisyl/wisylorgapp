@@ -13,7 +13,7 @@ class ErrorPage extends React.Component {
   static propTypes() {
     return {
       errorCode: React.PropTypes.number.isRequired,
-      url: React.PropTypes.string.isRequired
+      pathname: React.PropTypes.string.isRequired
     }
   }
 
