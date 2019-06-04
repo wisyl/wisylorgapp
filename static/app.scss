@@ -78,6 +78,10 @@ a:hover, .btn:hover {
   color: $white !important;
 }
 
+th {
+  text-align: center;
+}
+
 tbody {
   th {
     font-weight: $font-weight-base;
@@ -208,4 +212,8 @@ footer {
 
 .background-pink {
   background-color: #fceeeb;
+}
+
+.description {
+  font-size: 0.6rem;
 }
