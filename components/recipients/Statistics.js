@@ -1,11 +1,9 @@
 ﻿import React from 'react';
 import {
-  Container,
   Row,
   Col,
   Card,
   CardBody,
-  Label,
 } from 'reactstrap';
 
 export default class extends React.Component {
@@ -16,9 +14,9 @@ export default class extends React.Component {
           <Card>
             <CardBody className="d-flex flex-row align-items-center">
               <i className="fas fa-user-friends circle-background background-gray mb-3" />
-              <div className="ml-3 d-flex flex-column">
+              <div className="ml-3 d-flex flex-column description">
                 <h2>2,456</h2>
-                <label>TOTAL INVITED RECIPIENTS</label>
+                TOTAL INVITED RECIPIENTS
               </div>
             </CardBody>
           </Card>
@@ -28,9 +26,9 @@ export default class extends React.Component {
           <Card>
             <CardBody className="d-flex flex-row align-items-center">
               <i className="fas fa-user-friends circle-background background-pink mb-3" />
-              <div className="ml-3 d-flex flex-column">
+              <div className="ml-3 d-flex flex-column description">
                 <h2>1,897</h2>
-                <label>ACTIVE RECIPIENTS</label>
+                ACTIVE RECIPIENTS
               </div>
             </CardBody>
           </Card>
