@@ -24,6 +24,7 @@
     "start": "cross-env NODE_ENV=production PORT=80 node server.js"
   },
   "dependencies": {
+    "@hapi/joi": "^15.0.3",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "babel-core": "^6.26.3",
@@ -35,6 +36,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^8.0.0",
     "express-session": "^1.16.1",
+    "fetch": "^1.1.0",
     "fs": "0.0.1-security",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.4.1",
@@ -53,6 +55,7 @@
     "reactstrap": "^8.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "styled-components": "^4.3.1",
     "universal-cookie": "^4.0.0",
     "vogels": "^2.2.0"
   },

@@ -2,15 +2,18 @@
 
 const dotenv = require('dotenv')
 const fs = require('fs')
+const User = require('./models/user')
 // .env
 dotenv.config()
 
 // override env-specific .env file
 const node_env = process.env.NODE_ENV || 'development'
 const envConfig = dotenv.parse(fs.readFileSync(`.env.${node_env}`))
+
 for (let k in envConfig) {
   process.env[k] = envConfig[k]
 }
+
 process.env.NODE_ENV = node_env
 process.env.PORT = process.env.PORT || (node_env === 'production' ? 80 : 3000)
 
@@ -63,6 +66,21 @@ nextApp
 
     // Add account management route - reuses functions defined for NextAuth
     //routes.account(expressApp, nextAuthOptions.functions)
+    
+    expressApp.post(`/auth/user`, (req, res) => {
+      User.insert({ 
+        email: req.body.email, 
+        name: req.body.name, 
+        password: req.body.password 
+      }, user => {
+        User.load({ email: req.body.email }, (err, user) => {
+          console.log(user)
+          req.login(user.attrs, (err) => {
+            return res.redirect(`/auth/callback?action=signin&service=credentials`)
+          })
+        })
+      })  
+    })
 
     // Default catch-all handler to allow Next.js to handle all other routes
     expressApp.all('*', (req, res) => {
