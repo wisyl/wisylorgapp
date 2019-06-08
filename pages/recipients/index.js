@@ -14,7 +14,15 @@ import {
   Groups
 } from '../../components/recipients'
 
+import Router from 'next/router'
+
 export default class extends Page {
+  componentDidMount() {
+    if (!this.props.session.user) {
+      console.warn("User is not logged in - redirecting to auth")
+      Router.push('/auth')
+    }
+  }
 
   render() {
     return (

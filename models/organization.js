@@ -1,8 +1,7 @@
 ﻿'use strict'
 
 const vogels = require('vogels')
-const Joi = require('joi')
-const crypto = require('crypto')
+const Joi = require('@hapi/joi')
 const only = require('only')
 
 vogels.AWS.config.update({
@@ -17,9 +16,6 @@ const Organization = vogels.define('Organization', {
   schema: {
     id: vogels.types.uuid(),
     name: Joi.string().trim().regex(/^[A-Za-z ]{3,}$/),
-    email: Joi.string().email().trim().required(),
-    hashed_password: Joi.string(),
-    salt: Joi.string(),
   }
 })
 
@@ -30,50 +26,13 @@ module.exports = Organization
  */
 
 Organization.before('create', (data, next) => {
-  // password validation
-  if (!data.password || !data.password.length) {
-    return next(new Error('Password can not be empty'), data)
-  }
-
-  // email duplication
-  Organization.load({ email: data.email }, (err, admin) => {
-    if (err) return next(err)
-    if (admin) return next(new Error('Email already exists'), data)
-
-    data.salt = makeSalt()
-    data.hashed_password = encryptPassword(data.salt, data.password)
-
-    delete data.password
-    delete data._csrf
-
-    next(null, data)
-  })
+  next(null, data)
 })
 
 
 /**
  * Methods
  */
-
-Organization.prototype.authenticate = (plainText) => {
-  return encryptPassword(this.get('salt'), plainText) === this.get('hashed_password')
-}
-
-const makeSalt = () => {
-  return Math.round(new Date().valueOf() * Math.random()) + ''
-}
-
-const encryptPassword = (salt, password) => {
-  if (!password) return ''
-  try {
-    return crypto
-      .createHmac('sha1', salt)
-      .update(password)
-      .digest('hex')
-  } catch (err) {
-    return ''
-  }
-}
 
 /**
  * Statics
@@ -83,7 +42,7 @@ Organization.load = ({ id, email }, cb) => {
   if (id) {
     return Organization.get(options.id, {
       ConsistentRead: true,
-      AttributesToGet: ['id', 'name', 'email']
+      AttributesToGet: ['id', 'name']
     }, cb)
   } else {
     return Organization.scan()
@@ -96,10 +55,10 @@ Organization.load = ({ id, email }, cb) => {
 }
 
 Organization.insert = (data, cb) =>
-  Organization.create(only(data, 'email password name'), cb)
+  Organization.create(only(data, 'name'), cb)
 
 Organization.update = (data, cb) =>
-  Organization.create(only(data, 'id email password name'), cb)
+  Organization.create(only(data, 'id name'), cb)
 
 Organization.remove = (id, cb) =>
   Organization.destroy(id, cb)

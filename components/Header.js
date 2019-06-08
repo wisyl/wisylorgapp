@@ -13,6 +13,9 @@ import {
   DropdownItem,
 } from 'reactstrap'
 
+import { NextAuth } from 'next-auth/client'
+import Router from 'next/router'
+
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +30,17 @@ export default class extends Component {
     this.setState({
       isMenuOpen: !this.state.isMenuOpen,
     });
+  }
+
+  handleSignOutSubmit(event) {
+    event.preventDefault()
+    NextAuth.signout()
+    .then(() => {
+      Router.push('/auth/callback')
+    })
+    .catch(err => {
+      Router.push('/auth/error?action=signout')
+    })
   }
 
   render() {
@@ -59,6 +73,11 @@ export default class extends Component {
               <NavItem>
                 <NavLink href="/profile">
                   <i className="fas fa-user"/>
+                </NavLink>
+              </NavItem>
+              <NavItem onClick={(e) => this.handleSignOutSubmit(e)}>
+                <NavLink>
+                  <i className="fas fa-sign-out-alt"/>
                 </NavLink>
               </NavItem>
             </Nav>

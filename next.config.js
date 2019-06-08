@@ -4,6 +4,10 @@
     pagesBufferLength: 10
   },
   webpack: (config, options) => {
+    config.node = {
+      dns: 'mock',
+      net: 'mock'
+    }
     config.module.rules.push(
       {
         test: /\.(css|scss)/,

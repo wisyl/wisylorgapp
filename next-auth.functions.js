@@ -1,10 +1,10 @@
-const Organization = require('./models/organization');
+const User = require('./models/user');
 
 module.exports = () => {
   return Promise.resolve({
     find: ({ id, email } = {}) => {
       return new Promise((resolve, reject) => {
-        Organization.load({ id, email }, (err, org) => {
+        User.load({ id, email }, (err, org) => {
           if (err) return reject(err)
           return resolve(org.attrs)
         })
@@ -12,7 +12,7 @@ module.exports = () => {
     },
     insert: (orgData, oAuthProfile) => {
       return new Promise((resolve, reject) => {
-        Organization.insert(orgData, (err, org) => {
+        User.insert(orgData, (err, org) => {
           if (err) return reject(err)
           if (!orgData.id && org.attrs.id) orgData.id = org.attrs.id
           return resolve(orgData)
@@ -21,7 +21,7 @@ module.exports = () => {
     },
     update: (orgData, oAuthProfile) => {
       return new Promise((resolve, reject) => {
-        Organization.update(orgData, (err, org) => {
+        User.update(orgData, (err, org) => {
           if (err) return reject(err)
           return resolve(orgData)
         })
@@ -29,7 +29,7 @@ module.exports = () => {
     },
     remove: (id) => {
       return new Promise((resolve, reject) => {
-        Organization.remove(id, (err) => {
+        User.remove(id, (err) => {
           if (err) return reject(err)
           return resolve(true)
         })
@@ -39,12 +39,12 @@ module.exports = () => {
       if (orgData.id) {
         return Promise.resolve(orgData.id)
       } else {
-        return Promise.reject(new Error("Unable to serialise organization"))
+        return Promise.reject(new Error("Unable to serialise User"))
       }
     },
     deserialize: (id) => {
       return new Promise((resolve, reject) => {
-        Organization.load({ id }, (err, org) => {
+        User.load({ id }, (err, org) => {
           if (err) return reject(err)
 
           if (!org) return resolve(null)
@@ -52,6 +52,24 @@ module.exports = () => {
           return resolve(org.attrs)
         })
       })
-    }
+    },
+    signIn: ({form, req}) => {
+      return new Promise((resolve, reject) => {
+        // Should validate credentials (e.g. hash password, compare 2FA token
+        // etc) and return a valid user object from a database.
+        return User.load({
+          email: form.email
+        }, (err, user) => {
+          if (err) return reject(err)
+          if (!user) return resolve(null)
+
+          if (user.authenticate(form.password, user.attrs.salt, user.attrs.hashed_password)) {
+            return resolve(user.attrs)
+          } else {
+            return null
+          }
+        })
+      })
+    },
   })
 }
