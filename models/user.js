@@ -8,12 +8,6 @@ const only = require('only')
 const dotenv = require('dotenv')
 dotenv.config()
 
-console.log({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION
-})
-
 vogels.AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -29,7 +23,7 @@ const User = vogels.define('User', {
     email: Joi.string().email().trim().required(),
     hashed_password: Joi.string(),
     salt: Joi.string(),
-    company_id: Joi.string(),
+    organization_id: Joi.string(),
   }
 })
 
@@ -93,7 +87,7 @@ User.load = ({ id, email }, cb) => {
   if (id) {
     return User.get(id, {
       ConsistentRead: true,
-      AttributesToGet: ['id', 'name', 'email']
+      AttributesToGet: ['id', 'name', 'email', 'organization_id']
     }, cb)
   } else {
     return User.scan()
@@ -106,10 +100,7 @@ User.load = ({ id, email }, cb) => {
 }
 
 User.insert = (data, cb) =>
-  User.create(only(data, 'email password name'), cb)
-
-User.update = (data, cb) =>
-  User.create(only(data, 'id email password name'), cb)
+  User.create(only(data, 'email password name organization_id'), cb)
 
 User.remove = (id, cb) =>
   User.destroy(id, cb)

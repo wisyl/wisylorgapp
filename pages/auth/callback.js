@@ -23,12 +23,23 @@ export default class extends React.Component {
       
       // Allow relative paths only - strip protocol/host/port if they exist.
       redirectTo = redirectTo.replace( /^[a-zA-Z]{3,5}\:\/{2}[a-zA-Z0-9_.:-]+\//, '')
+    
+      if (!session.user.organization_id) {
+        console.warn("User is missing an organization", session.user)
+        redirectTo = '/auth/create-organization'
+      }
     }
+
+    cookies.set('redirect_url', redirectTo)
     
     return {
       session: session,
       redirectTo: redirectTo
     }
+  }
+
+  handlePreAuthRouting() {
+
   }
 
   async componentDidMount() {
