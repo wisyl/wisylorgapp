@@ -48,7 +48,7 @@ export default class extends React.Component {
     
     // Save current URL so user is redirected back here after signing in
     const cookies = new Cookies()
-    cookies.set('redirect_url', window.location.pathname, { path: '/' })
+    cookies.set('redirect_url', window.location.pathname, { path: '/profile' })
 
     const formData = {
       _csrf: this.props.session.csrfToken,
@@ -65,7 +65,9 @@ export default class extends React.Component {
     fetch('/auth/signin', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'redirect_url': `${window.location.pathname}/profile`,
+        'cookies': cookies.getAll(),
       },
       body: encodedForm,
       credentials: 'same-origin'
@@ -74,7 +76,7 @@ export default class extends React.Component {
       if (response.ok) {
         Router.push(`/auth/callback`)
       } else {
-        Router.push(`/auth/error?action=signin&type=password&email=${this.state.email}`)
+        Router.push(`/auth/error?action=signin&type=password&email=${this.state.email}&redirect_url=profile`)
       }
     })
   }

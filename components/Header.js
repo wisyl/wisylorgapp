@@ -49,6 +49,7 @@ export default class extends Component {
           <NavbarBrand href="/" className="d-flex flex-row align-items-center">
             <img src='/static/logo.png' alt="image" className="mr-1"/>
             <strong>Wisyl</strong>
+            <i>&nbsp;{this.props.organization && this.props.organization.name}</i>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleMenu}/>
           <Collapse isOpen={this.state.isMenuOpen} navbar>

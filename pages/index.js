@@ -2,22 +2,20 @@
 import Layout from '../components/layout'
 import Router from 'next/router'
 
+import { completedEnrollment } from '../lib/ComponentMethods'
+
 export default class extends Page {
   constructor(props) {
     super(props)
   }
 
   componentDidMount() {
-    if (!this.props.session.user) {
-      console.warn("User is not logged in - redirecting to auth")
-      Router.push('/auth')
-    }
+    completedEnrollment(this.props, Router)
   }
 
   render() {
-  
     return (
-      <Layout>
+      <Layout {...this.props}>
       </Layout>
     );
   }

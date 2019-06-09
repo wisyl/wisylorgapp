@@ -2,10 +2,29 @@ import React from 'react'
 import Layout from './layout'
 import { NextAuth } from 'next-auth/client'
 
+import getConfig from 'next/config'
+const config = getConfig()
+
 export default class extends React.Component {  
   static async getInitialProps({req, res}) {
+    const session = await NextAuth.init({req})
+
+    let organization
+    let user
+
+    //  Serialize global props
+    if (session.user) {
+      const orgRaw = await fetch(`${config.publicRuntimeConfig.BASE_URL}/users/${session.user.id}/organization`)
+      organization = await orgRaw.json()
+
+      const userRaw = await fetch(`${config.publicRuntimeConfig.BASE_URL}/users/${session.user.id}`)
+      user = await userRaw.json()
+    }
+    
     return {
-      session: await NextAuth.init({req}),// Add this.props.session to all pages
+      organization,
+      user,
+      session,// Add this.props.session to all pages
       lang: 'en' // Add a lang property to all pages for accessibility
     }
   }

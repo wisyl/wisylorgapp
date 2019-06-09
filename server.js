@@ -2,7 +2,11 @@
 
 const dotenv = require('dotenv')
 const fs = require('fs')
+const routes = require('./routes')
+
 const User = require('./models/user')
+
+
 // .env
 dotenv.config()
 
@@ -22,11 +26,6 @@ process.env.PORT = process.env.PORT || (node_env === 'production' ? 80 : 3000)
 const next = require('next')
 const nextAuth = require('next-auth')
 const nextAuthConfig = require('./next-auth.config')
-
-const routes = {
-  //admin: require('./routes/admin'),
-  //account: require('./routes/account')
-}
 
 process.on('uncaughtException', function (err) {
   console.error('Uncaught Exception: ', err)
@@ -61,11 +60,8 @@ nextApp
     const express = nextAuthOptions.express
     const expressApp = nextAuthOptions.expressApp
 
-    // Add admin routes
-    //routes.admin(expressApp)
-
-    // Add account management route - reuses functions defined for NextAuth
-    //routes.account(expressApp, nextAuthOptions.functions)
+    //  Apply custom routes
+    routes(expressApp)
     
     expressApp.post(`/auth/user`, (req, res) => {
       User.insert({ 
@@ -74,7 +70,6 @@ nextApp
         password: req.body.password 
       }, user => {
         User.load({ email: req.body.email }, (err, user) => {
-          console.log(user)
           req.login(user.attrs, (err) => {
             return res.redirect(`/auth/callback?action=signin&service=credentials`)
           })

@@ -25,6 +25,7 @@ import classnames from 'classnames' // for navtabs
 import Page from '../../components/page'
 import Layout from '../../components/layout'
 import Router from 'next/router'
+import { completedEnrollment } from '../../lib/ComponentMethods'
 
 export default class extends Page {
   constructor(props) {
@@ -45,15 +46,12 @@ export default class extends Page {
   }
 
   componentDidMount() {
-    if (!this.props.session.user) {
-      console.warn("User is not logged in - redirecting to auth")
-      Router.push('/auth')
-    }
+    completedEnrollment(this.props, Router)
   }
 
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div className="site-container">
           <Container>
             <Row>

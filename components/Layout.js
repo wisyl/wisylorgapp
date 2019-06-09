@@ -18,11 +18,11 @@ export default class extends Component {
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js" />
         </Head>
         <div className="min-vh-100 d-flex flex-column">
-          {!hideHeader && <Header />}
+          {!hideHeader && <Header {...this.props} />}
           <div className="flex-fill">
             {this.props.children}
           </div>
-          {!hideFooter && <Footer />}
+          {!hideFooter && <Footer {...this.props} />}
         </div>
       </React.Fragment>
     )
